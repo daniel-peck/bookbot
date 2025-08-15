@@ -1,4 +1,5 @@
-from stats import count_words, count_characters, sort_char_count, sort_on
+import sys
+from stats import count_words, count_characters, sort_char_count
 
 def get_book_text(filepath):
     with open(filepath) as f: 
@@ -6,6 +7,15 @@ def get_book_text(filepath):
     return file_contents
 
 def main():
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    book_filepath = sys.argv[1]
+    word_count = count_words(get_book_text(f"/home/dan/workspace/github.com/daniel-peck/bookbot/{book_filepath}"))
+    list_of_char_count = count_characters(get_book_text(f"/home/dan/workspace/github.com/daniel-peck/bookbot/{book_filepath}"))
+    sorted_char_count = sort_char_count(list_of_char_count)
+
     print(f"============ BOOKBOT ============")
     print(f"Analyzing book found at {book_filepath}...")
     print(f"------------ Word Count ----------")
@@ -17,9 +27,7 @@ def main():
     print(f"============ END ============")
 
 
-book_filepath = "books/frankenstein.txt"
-word_count = count_words(get_book_text("/home/dan/workspace/github.com/daniel-peck/bookbot/books/frankenstein.txt"))
-list_of_char_count = count_characters(get_book_text("/home/dan/workspace/github.com/daniel-peck/bookbot/books/frankenstein.txt"))
-sorted_char_count = sort_char_count(list_of_char_count)
+
+
 
 main()
