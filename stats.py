@@ -12,6 +12,18 @@ def count_characters(text_from_book):
 
     return char_dict
 
+def sort_on(items):
+    return items["count"]
+
+def sort_char_count(dict_of_count_characters): 
+    list_of_char_count = []
+    for char, num in dict_of_count_characters.items(): 
+        list_of_char_count.append({"char": char, "count": num})
+    
+    list_of_char_count.sort(reverse=True, key=sort_on)
+
+    return list_of_char_count
+
 
 
 
