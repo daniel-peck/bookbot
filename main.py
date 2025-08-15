@@ -1,5 +1,4 @@
-def count_words(text_from_book): 
-    return(len(text_from_book.split()))
+from stats import count_words, count_characters
 
 def get_book_text(filepath):
     with open(filepath) as f: 
@@ -12,6 +11,8 @@ def main():
 
 
 print(f"{count_words(get_book_text("/home/dan/workspace/github.com/daniel-peck/bookbot/books/frankenstein.txt"))} words found in the document")
+num_each_char = count_characters(get_book_text("/home/dan/workspace/github.com/daniel-peck/bookbot/books/frankenstein.txt"))
+print(num_each_char)
 #main()
 
 
